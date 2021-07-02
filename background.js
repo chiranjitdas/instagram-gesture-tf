@@ -36,12 +36,11 @@ function getVisibleArticle() {
     const articleListArray = Array.from(articleList);
     const visibleArticles = articleListArray.filter(function (article) {
         const bounds = article.getBoundingClientRect();
-        return bounds.top > 0 && bounds.bottom > 0;
+        return bounds.top > 0 || bounds.bottom > 0;
     });
     visibleArticles.sort(function (a, b) {
         const boundsA = a.getBoundingClientRect();
         const boundsB = b.getBoundingClientRect();
-        console.log('I am here');
         return boundsA.top - boundsB.top;
     });
     const [article1, article2] = visibleArticles;
